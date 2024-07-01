@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  samba-service:
+    build: .
+    volumes:
+      - ./smb.conf:/etc/samba/smb.conf:ro
+      - ./shared:/srv/samba/shared
+    ports:
+      - "137:137"
+      - "138:138"
+      - "139:139"
+      - "445:445"
+    environment:
+      - TZ=America/Los_Angeles
